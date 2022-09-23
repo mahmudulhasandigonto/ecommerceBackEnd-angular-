@@ -1,0 +1,14 @@
+.images_1_of_4 img {
+   display: inline-block;
+   max-width: 63%;
+}
+
+
+
+.images_1_of_4 {
+   width: 20.1%;
+   padding: 1.5%;
+   text-align: center;
+   position: relative;
+   margin-left: 19px;
+}

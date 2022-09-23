@@ -1,0 +1,57 @@
+<div class="main">
+   <div class="content">
+      <div class="cartoption">
+         <div class="cartpage">
+            <h2>Your Cart</h2>
+            <table class="tblone">
+               <tr>
+                  <th width="20%">Product Name</th>
+                  <th width="10%">Image</th>
+                  <th width="15%">Price</th>
+                  <th width="25%">Quantity</th>
+                  <th width="20%">Total Price</th>
+                  <th width="10%">Action</th>
+               </tr>
+               <tr *ngFor="let product of cartProductList">
+                  <td>{{product.productName}}</td>
+                  <td><img [src]="product.imageUrl" alt="" /></td>
+                  <td>{{product.productPrice | currency}}</td>
+                  <td>
+                     <form method="post">
+                        <input type="number" name="inputData" [(ngModel)]="product.quantity" />
+                        <input type="submit" name="submit" (click)="updateCart(product.cartId, product)"
+                           value="Update" />
+                     </form>
+                  </td>
+                  <td>{{(product.productPrice * product.quantity) | currency}}</td>
+                  <td><a href="" routerLink="/cart" (click)="deleteCart(product.cartId)">X</a></td>
+               </tr>
+
+            </table>
+            <table style="float:right;text-align:left;" width="40%" *ngIf="cartProductList.length > 0">
+               <tr>
+                  <th>Sub Total : </th>
+                  <td>{{totalSubSum | currency}}</td>
+               </tr>
+               <tr>
+                  <th>VAT : </th>
+                  <td>{{vat | currency}}</td>
+               </tr>
+               <tr>
+                  <th>Grand Total :</th>
+                  <td>{{vat+totalSubSum | currency}}</td>
+               </tr>
+            </table>
+         </div>
+         <div class="shopping">
+            <div class="shopleft">
+               <a href="#" routerLink=""> <img src="assets/images/shop.png" alt="" /></a>
+            </div>
+            <div class="shopright" *ngIf="cartProductList.length > 0">
+               <a href="#" routerLink="/login"> <img src="assets/images/check.png" alt="" /></a>
+            </div>
+         </div>
+      </div>
+      <div class="clear"></div>
+   </div>
+</div>
